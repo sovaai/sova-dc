@@ -1,0 +1,2 @@
+kademlia==2.2.2
+aiohttp==3.6.2

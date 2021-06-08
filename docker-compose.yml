@@ -1,0 +1,14 @@
+version: '2.3'
+
+services:
+  sova-dc:
+    restart: always
+    container_name: sova-dc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sova-dc:master
+    volumes:
+      - .:/sova-dc
+    network_mode: host
+    command: bash -c "python3 client_dc.py --port 5678 --neighbours 192.168.0.2:5678 --services asr/cpu/192.168.0.1:8888,tts/gpu/192.168.0.1:8899"
