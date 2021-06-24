@@ -39,3 +39,7 @@ If you want to provide your computing capacities to the network users or create 
      $ python3 client_user.py --address 192.168.0.1:5600 --service asr --file Data/test.wav
      $ python3 client_user.py --address 192.168.0.1:5600 --service tts --text "Добрый день"
      ```
+
+## Requests distribution
+
+*   For the purpose of requests distribution we use simply `random.choice(sequence)` regardless of nodes' load (see https://github.com/sovaai/sova-dc/blob/master/client_dc.py#L44). You can modify it for your own purposes (monitor load for every node, etc.). The current requests distribution is even, therefore `N` requests are processed by `m` nodes with the same hardware configuration roughly `m` times faster than requests sent to one node only.
